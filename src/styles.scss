@@ -1,1 +1,123 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+body {
+    margin: 8;
+}
+
+button {
+    outline: none;
+}
+
+.popup {
+    box-sizing: border-box;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    box-shadow: 0px 0px 20px 0px black;
+
+    background-color: antiquewhite;
+
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    width: 100%;
+    max-width: 600px;
+    
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    &__title {
+        font-size: 40px;
+
+        margin-bottom: 30px;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: flex-end;
+
+        margin-top: 30px;
+
+        @media (max-width: 500px) {
+            justify-content: center;
+            flex-direction: column-reverse;
+        }
+
+        button {
+            margin-left: 10px;
+
+            @media (max-width: 500px) {
+                margin-left: 0px;
+                margin-bottom: 10px;
+
+                &.button-cancel {
+                    margin: 0 auto;
+                }
+
+                &.button-ok {
+                    height: 60px;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+.button {
+    min-width: 100px;
+    min-height: 40px;
+
+    font-weight: 600;
+    
+    cursor: pointer;
+
+    &-ok {
+        background-color: cornflowerblue;
+        color: white;
+    }
+
+    &-cancel {
+        background-color: coral;
+    }
+}
+
+
+
+.playerInputs {
+
+    border-top: 2px solid black;
+
+    margin-bottom: 20px;
+
+    &__item {
+
+        display: flex;
+        align-items: center;
+
+        margin-top: 20px;
+
+        input {
+            min-height: 40px;
+            box-sizing: border-box;
+            padding-left: 10px;
+
+            @media (max-width: 500px) {
+                width: 100%;
+            }
+        }
+
+        &_title {
+            min-width: 120px;
+        }
+    }
+}
+
+.addPlayer {
+    @media (max-width: 500px) {
+        width: 100%;
+    }
+}

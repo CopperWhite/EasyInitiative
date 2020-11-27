@@ -1,0 +1,24 @@
+<div class="popup">
+
+    <div class="popup__title">НПС:</div>
+
+    <div class="playerInputs" *ngFor="let item of chars">
+        <div class="playerInputs__item">
+            <div class="playerInputs__item_title">Название: </div> <input type="text" [(ngModel)]="item.name">
+        </div>
+        <div class="playerInputs__item">
+            <div class="playerInputs__item_title">Бонус: </div> <input type="number" [(ngModel)]="item.initBonus">
+        </div>
+        <div class="playerInputs__item">
+            <div class="playerInputs__item_title">Количество: </div> <input type="number" [(ngModel)]="item.amount">
+        </div>
+    </div>
+
+    <button (click)="addChar()" class="addPlayer button button-ok">Добавить группу НПС</button>
+
+
+    <div class="popup__buttons">
+        <button (click)="cancel()" class="button button-cancel">Отмена</button>
+        <button (click)="next()" class="button button-ok">Далее</button>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="popup">
+
+    <div class="popup__title">Ироки:</div>
+
+    <div class="playerInputs" *ngFor="let item of players">
+        <div class="playerInputs__item">
+            <div class="playerInputs__item_title">Имя: </div> <input type="text" [(ngModel)]="item.name">
+        </div>
+        <div class="playerInputs__item">
+            <div class="playerInputs__item_title">Инициатива: </div> <input type="number" [(ngModel)]="item.initiative">
+        </div>
+    </div>
+
+    <button class="addPlayer button button-ok" (click)="addPlayer()">Добавить игрока</button>
+
+    <div class="popup__buttons">
+        <button (click)="cancel()" class="button button-cancel">Отмена</button>
+        <button (click)="next()" class="button button-ok">Бросить инициативу</button>
+    </div>
+
+</div>

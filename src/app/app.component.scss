@@ -1,0 +1,152 @@
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+    @each $property in $properties {
+        #{$property}: $min-value;
+    }
+
+    @media (min-width: $min-vw) {
+        @each $property in $properties {
+            #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+        }
+    }
+
+    @media (min-width: $max-vw) {
+        @each $property in $properties {
+            #{$property}: $max-value;
+        }
+    }
+}
+
+@function strip-unit($number) {
+    @if type-of($number) == "number" and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+
+.app {
+    position: relative;
+
+    width: 100%;
+    max-width: 1200px;
+
+    min-height: 500px;
+
+    margin: 0 auto;
+    margin-top: 40px;
+    @include fluid-type(margin-top, 360px, 1200px, 0px, 40px);
+    @media (max-width: 360px) {
+        margin-top: 0px;
+    }
+
+    margin-bottom: 40px;
+
+    font-size: 20px;
+
+    background-color: antiquewhite;
+
+
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 20px;
+    
+    &__title {
+        font-size: 40px;
+        @include fluid-type(font-size, 360px, 1200px, 26px, 40px);
+        @media (max-width: 360px) {
+            font-size: 26px;
+        }
+
+        font-weight: 600;
+
+        margin-bottom: 30px;
+
+        text-align: center;
+    }
+}
+
+.initiativeLine {
+
+
+    &__item {
+
+        display: flex;
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 10px;
+
+        &.evenInitiative {
+            background-color: lavender;
+        }
+
+        &.active {
+            background-color: coral;
+        }
+
+        &_value {
+            font-weight: 800;
+            font-size: 24px;
+
+            margin-right: 10px;
+
+            min-width: 37px;
+            border-right: 2px solid black;
+        }
+
+        &_name {
+            
+        }
+    }
+
+    &__rounds {
+        font-size: 24px;
+
+        margin-bottom: 20px;
+
+        span {
+            font-weight: 800;
+            margin-left: 10px;
+        }
+    }
+
+    &__nextButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: sticky;
+        bottom: 10vh;
+
+        width: 100px;
+        height: 100px;
+
+        margin: 0 100%;
+        transform: translateX(-100%);
+
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 100%;
+
+        background-color: palevioletred;
+
+        cursor: pointer;
+    }
+}
+
+.newInit {
+    margin-bottom: 30px;
+    
+    display: flex;
+    justify-content: center;
+
+    button {
+        @media (max-width: 500px) {
+
+            height: 60px;
+            font-size: 20px;
+            width: 100%;
+        }
+    }
+    
+}

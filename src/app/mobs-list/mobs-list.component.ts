@@ -12,7 +12,7 @@ export class MobsListComponent implements OnInit {
             name: '',
             initiative: null,
             initBonus: null,
-            amount: null
+            amount: 1
         },
     ];
 
@@ -24,7 +24,7 @@ export class MobsListComponent implements OnInit {
                 name: '',
                 initiative: null,
                 initBonus: null,
-                amount: null
+                amount: 1
             } 
         )
     };
@@ -36,6 +36,10 @@ export class MobsListComponent implements OnInit {
             if ((element["name"] == "" || typeof element["name"] !== "string") || (element["initBonus"] == null || typeof element["initBonus"] !== "number") || (element["amount"] == null || typeof element["amount"] !== "number")) {
                 alert("Пожалуйста, заполните все поля формы корректными значениями");
                 return false;
+            }
+
+            if (element["amount"] < 1) {
+                element["amount"] = 1;
             }
         }
 
@@ -69,6 +73,12 @@ export class MobsListComponent implements OnInit {
         })
 
         this.charsFilled = charArr;
+    }
+
+    checkPositive($event) {
+        if ($event.target.value < 1) {
+            $event.target.value = null;
+        }
     }
 
     constructor() { }

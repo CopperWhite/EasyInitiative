@@ -29,6 +29,8 @@ export class MobsListComponent implements OnInit {
         )
     };
 
+
+    // Checks for wrong/blank form values and emits event for app-component
     @Output() toPlayers = new EventEmitter();
 
     next() {
@@ -53,6 +55,7 @@ export class MobsListComponent implements OnInit {
         this.cancelInit.emit();
     }
 
+    // Throws initiative for each character in charArr and fills charsFilled with new
     fillCharsArr() {
 
         let charArr = []
@@ -75,6 +78,7 @@ export class MobsListComponent implements OnInit {
         this.charsFilled = charArr;
     }
 
+    //Prevents "amount" input from going below positive values
     checkPositive($event) {
         if ($event.target.value < 1) {
             $event.target.value = null;

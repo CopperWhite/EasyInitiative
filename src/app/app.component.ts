@@ -25,6 +25,7 @@ export class AppComponent {
         this.step = 1;
     }
 
+    // Moves app to Player initiative fill state
     nextStep(data) {
 
         this.initiativeLineMobs = data;
@@ -38,6 +39,7 @@ export class AppComponent {
         this.step = 0;
     }
 
+    // Generates initiative line from Players' and Characters' inititive arrays and sorts it
     rollInit(data) {
         this.initiativeLinePlayers = data;
 
@@ -53,6 +55,7 @@ export class AppComponent {
         this.round = 1;
         this.activePlayer = 0;
 
+        // Sets first element in initiative line as active
         setTimeout( () => {
             this.initSelectorList = document.querySelectorAll('.initiativeLine__item');
             this.selectActivePlayer();
@@ -60,6 +63,7 @@ export class AppComponent {
         
     }
 
+    // Moves app to the next active element in initiative line
     nextTurn() {
         if (this.activePlayer < this.initiativeLineSort.length - 1) {
             this.activePlayer++;
@@ -71,6 +75,7 @@ export class AppComponent {
         this.selectActivePlayer();
     }
 
+    // Sets active initiative line element
     selectActivePlayer() {
 
         this.initSelectorList.forEach(element => {

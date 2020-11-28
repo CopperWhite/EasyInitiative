@@ -24,6 +24,7 @@ export class PlayersListComponent implements OnInit {
         )
     };
 
+    // Checks for wrong/blank form values and emits event for app-component
     @Output() rollInit = new EventEmitter();
 
     next() {

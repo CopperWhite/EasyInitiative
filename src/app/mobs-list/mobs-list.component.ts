@@ -31,6 +31,7 @@ export class MobsListComponent implements OnInit {
 
 
     // Checks for wrong/blank form values and emits event for app-component
+    // Проверяет корректность вводимых в форму данных и передаёт событие в app-component
     @Output() toPlayers = new EventEmitter();
 
     next() {
@@ -56,6 +57,7 @@ export class MobsListComponent implements OnInit {
     }
 
     // Throws initiative for each character in charArr and fills charsFilled with new
+    // Бросает инициативу для каждого элемента charArr и записывает данные элемента + инициативу в charsFilled
     fillCharsArr() {
 
         let charArr = []
@@ -78,7 +80,8 @@ export class MobsListComponent implements OnInit {
         this.charsFilled = charArr;
     }
 
-    //Prevents "amount" input from going below positive values
+    // Prevents "amount" input from going below positive values
+    // Не позволяет вводить в поле "Количество" значения ниже 1
     checkPositive($event) {
         if ($event.target.value < 1) {
             $event.target.value = null;

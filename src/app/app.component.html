@@ -8,11 +8,11 @@
         <button (click)="createInit()" class="button button-ok">Новая инициатива</button>
     </div>
 
-    <div *ngIf="initiativeLineSort.length !== 0;" class="initiativeLine">
+    <div *ngIf="initiativeQueueSort.length !== 0;" class="initiativeLine">
 
         <div class="initiativeLine__rounds">Раунд: <span>{{ round }}</span></div>
 
-        <div *ngFor="let item of initiativeLineSort; let even = even;" [ngClass]="{evenInitiative: even }" class="initiativeLine__item">
+        <div *ngFor="let item of initiativeQueueSort; let even = even;" [ngClass]="{evenInitiative: even }" class="initiativeLine__item">
             <div class="initiativeLine__item_value">{{ item.initiative }}</div>
             <div class="initiativeLine__item_name">{{ item.name }}</div>
         </div>

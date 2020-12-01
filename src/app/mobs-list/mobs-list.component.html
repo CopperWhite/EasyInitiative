@@ -1,20 +1,20 @@
 <div class="popup">
 
-    <div class="popup__title">НПС:</div>
+    <abbr class="popup__title" title="НПС (NPC) - не игровой персонаж">НПС:</abbr>
 
     <div class="playerInputs" *ngFor="let item of chars">
         <div class="playerInputs__item">
-            <div class="playerInputs__item_title">Название: </div> <input type="text" [(ngModel)]="item.name">
+            <div class="playerInputs__item_title">Название: </div> <input type="text"  placeholder="Введите название НПС" [(ngModel)]="item.name">
         </div>
         <div class="playerInputs__item">
-            <div class="playerInputs__item_title">Бонус: </div> <input type="number" [(ngModel)]="item.initBonus">
+            <div class="playerInputs__item_title">Бонус: </div> <input type="number" placeholder="Введите бонус инициативы" [(ngModel)]="item.initBonus">
         </div>
         <div class="playerInputs__item">
-            <div class="playerInputs__item_title">Количество: </div> <input type="number" [(ngModel)]="item.amount" (input)="checkPositive($event)">
+            <div class="playerInputs__item_title">Количество: </div> <input type="number" placeholder="Введите количество" [(ngModel)]="item.amount" (input)="checkPositive($event)">
         </div>
     </div>
 
-    <button (click)="addChar()" class="addPlayer button button-ok">Добавить группу НПС</button>
+    <button (click)="addChar()" class="addPlayer button button-ok">Добавить группу <abbr title="НПС (NPC) - не игровой персонаж">НПС</abbr></button>
 
 
     <div class="popup__buttons">

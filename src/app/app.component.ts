@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
     title = 'initiative';
 
-    initiativeQueue : Array<Object> = [];
     initiativeQueueMobs : Array<Object> = [];
     initiativeQueuePlayers : Array<Object> = [];
 
@@ -16,7 +15,7 @@ export class AppComponent {
 
     step : number = 0;
 
-    initSelectorList; 
+    initSelectorList : any; 
     activePlayer : number = 0;
     round : number = 1;
 
@@ -31,8 +30,6 @@ export class AppComponent {
 
         this.initiativeQueueMobs = data;
 
-        console.log(this.initiativeQueueMobs)
-
         this.step = 2;
     }
 
@@ -45,14 +42,9 @@ export class AppComponent {
     rollInit(data) {
         this.initiativeQueuePlayers = data;
 
-        this.initiativeQueue = [...this.initiativeQueuePlayers, ...this.initiativeQueueMobs];
-
-        this.initiativeQueueSort = this.initiativeQueue.sort( (a, b) => {return b["initiative"] - a["initiative"]});
-
-        console.log(this.initiativeQueueSort);
+        this.initiativeQueueSort = [...this.initiativeQueuePlayers, ...this.initiativeQueueMobs].sort( (a, b) => {return b["initiative"] - a["initiative"]});
 
         this.step = 0;
-
         
         this.round = 1;
         this.activePlayer = 0;
@@ -60,7 +52,7 @@ export class AppComponent {
         // Sets first element in initiative queue as active
         // Делает первый элемент очереди инициативы активным
         setTimeout( () => {
-            this.initSelectorList = document.querySelectorAll('.initiativeQueue__item');
+            this.initSelectorList = document.querySelectorAll('.initiativeLine__item');
             this.selectActivePlayer();
         }, 0);
         
@@ -86,6 +78,8 @@ export class AppComponent {
         this.initSelectorList.forEach(element => {
             element.classList.remove('active');
         });
+
+        console.log(this.initSelectorList[this.activePlayer]);
 
         this.initSelectorList[this.activePlayer].classList.add('active');
     }

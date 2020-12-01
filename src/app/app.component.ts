@@ -79,8 +79,6 @@ export class AppComponent {
             element.classList.remove('active');
         });
 
-        console.log(this.initSelectorList[this.activePlayer]);
-
         this.initSelectorList[this.activePlayer].classList.add('active');
     }
 }

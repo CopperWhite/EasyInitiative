@@ -109,6 +109,8 @@ abbr {
             min-height: 40px;
             box-sizing: border-box;
             padding-left: 10px;
+            width: 100%;
+            max-width: 250px;
 
             @media (max-width: 500px) {
                 width: 100%;
